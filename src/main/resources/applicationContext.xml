@@ -8,7 +8,7 @@
     <context:component-scan base-package="crud" use-default-filters="false">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
-    <!--出现的问题是必须加上下边的扫描，否则service包下的不能被当做bean-->
+    <!--出现的问题是必须加下边的扫描，否则service包下的不能被当做bean-->
     <context:component-scan base-package="crud.service"/>
 
     <context:property-placeholder location="classpath:dbconfig.properties"/>

@@ -73,7 +73,9 @@
             <div class="col-md-6">
                 <nav aria-label="Page navigation">
                     <ul class="pagination">
-                        <li><a href="#">首页</a></li>
+                        <c:if test="${pageInfo.pageNum != 1}">
+                            <li><a href="<%=path%>/emps?pn=1">首页</a></li>
+                        </c:if>
                         <%--如果是第一页，则不显示箭头--%>
                         <c:if test="${pageInfo.hasPreviousPage}">
                             <li>
@@ -97,7 +99,9 @@
                                 </a>
                             </li>
                         </c:if>
-                        <li><a href="#">末页</a></li>
+                        <c:if test="${pageInfo.pageNum != pageInfo.pages}">
+                            <li><a href="<%=path%>/emps?pn=${pageInfo.pages}">末页</a></li>
+                        </c:if>
                     </ul>
                 </nav>
             </div>
