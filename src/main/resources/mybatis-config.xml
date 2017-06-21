@@ -14,7 +14,7 @@
     <!--注册分页插件-->
     <plugins>
         <plugin interceptor="com.github.pagehelper.PageInterceptor">
-            <property name="resonable" value="true"/>
+            <property name="reasonable" value="true"/>
         </plugin>
     </plugins>
 
