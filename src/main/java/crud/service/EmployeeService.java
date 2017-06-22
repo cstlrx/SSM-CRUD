@@ -42,4 +42,22 @@ public class EmployeeService {
         Long count = employeeMapper.countByExample(employeeExample);
         return count == 0;
     }
+
+    /**
+     * 更新员工信息
+     * @param employee
+     */
+    public void updateEmp(Employee employee) {
+        System.out.println("Update");
+        employeeMapper.updateByPrimaryKeySelective(employee);
+    }
+
+    /**
+     * 删除员工
+     * @param id
+     */
+    public void deleteById(Integer id) {
+        System.out.println("删除");
+        employeeMapper.deleteByPrimaryKey(id);
+    }
 }

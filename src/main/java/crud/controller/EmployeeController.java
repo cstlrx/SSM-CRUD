@@ -31,6 +31,39 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     /**
+     * 删除员工
+     * @param ids
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/emps/{empId}", method = RequestMethod.DELETE)
+    public Msg deleteEmp(@PathVariable("empId") String ids) {
+        System.out.println(ids);
+        if (ids.indexOf(",") == -1) {
+            employeeService.deleteById(Integer.parseInt(ids));
+        } else {
+            String[] idArr = ids.split(",");
+            for (String idStr : idArr) {
+                employeeService.deleteById(Integer.parseInt(idStr));
+            }
+        }
+        return Msg.success();
+    }
+
+    /**
+     * 修改员工信息
+     * @param employee
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/emps/{empId}", method = RequestMethod.PUT)
+    public Msg updateEmp(Employee employee) {
+        System.out.println(employee);
+        employeeService.updateEmp(employee);
+        return Msg.success();
+    }
+
+    /**
      * 校验添加的员工名字是否重复
      * @param empName
      * @return
@@ -38,7 +71,6 @@ public class EmployeeController {
     @ResponseBody
     @RequestMapping(value = "/validateName")
     public Msg validateEmpName(@RequestParam("empName") String empName) {
-
 //        try {
 //            empName = new String(empName.getBytes("ISO-8859-1"),"UTF-8");
 //        } catch (UnsupportedEncodingException e) {
